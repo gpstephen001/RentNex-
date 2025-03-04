@@ -8,10 +8,15 @@ import * as yup from "yup"
 // import { auth } from '../Firebase/settings';
 import { AppContext } from '../Components/globalVariables';
 import { AppButton } from '../Components/AppButton';
-// import { errorMessage } from '../Components/formatErrorMessage';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../Firebase/Settings';
+import { errorMessage } from '../Components/formatErrorMessage';
 
 export function SignIn({ navigation }) {
-    const { setUserUID, setPreloader } = useContext(AppContext);
+    const { setUserUID, userUID, setPreloader } = useContext(AppContext);
+
+    // console.log(userUID);
+
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "white" }}>
@@ -19,8 +24,18 @@ export function SignIn({ navigation }) {
                 <Formik
                     initialValues={{ email: "", password: "" }}
                     onSubmit={(value) => {
-                        console.log(value);
-
+                        setPreloader(true)
+                        signInWithEmailAndPassword(auth, value.email, value.password)
+                            .then((data) => {
+                                setUserUID(data.user.uid);
+                                setPreloader(false)
+                                navigation.navigate("Homescreen")
+                            })
+                            .catch(e => {
+                                setPreloader(false)
+                                console.log(e);
+                                Alert.alert("Error!", errorMessage(e.code))
+                            })
                     }}
                 >
                     {(prop) => {

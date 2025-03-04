@@ -17,8 +17,9 @@ export function Intro({ navigation }) {
                     </ScrollView>
                     <Text style={{}}>RentNex</Text>
                 </View>
+
                 <View style={{ gap: 10 }}>
-                    <AppButton onPress={() => { navigation.navigate("Homescreen") }}>Get Started</AppButton>
+                    <AppButton onPress={() => { navigation.navigate("SignUp") }}>Get Started</AppButton>
                     <AppButton
                         onPress={() => { navigation.navigate("SignIn", { userID: "AJ877_fuy8&8vbIU6" }) }}
                         style={{ backgroundColor: "white", borderWidth: 1, borderColor: Theme.colors.primary }}

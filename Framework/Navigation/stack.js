@@ -5,6 +5,13 @@ import { SignIn } from "../Screens/SignIn"
 import { Profile } from "../Screens/Profile"
 import { NavigationContainer } from "@react-navigation/native"
 import { EditProfile } from "../Screens/EditProfile"
+import { SignUp } from "../Screens/SignUp"
+import { FundAccount } from "../Screens/FundAccount"
+import { Pay } from "../Screens/Pay"
+import { EditPost } from "../Screens/EditPost"
+import { Posts } from "../Screens/Posts"
+import { AssetDetails } from "../Screens/AssetDetails"
+import { ForgotPassword } from "../Screens/ForgotPassword"
 
 const Stack = createNativeStackNavigator()
 
@@ -12,11 +19,18 @@ export function StackNavigator() {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Intro">
-                <Stack.Screen name="Intro" component={Intro} options={{ headerShown: false }} />
-                <Stack.Screen name="Homescreen" component={Homescreen} options={{ headerShown: false }} />
-                <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }} />
-                <Stack.Screen name="Profile" component={Profile} />
-                <Stack.Screen name="EditProfile" component={EditProfile} />
+                <Stack.Screen name="Intro" component={Intro} options={{ headerShown: false }}/>
+                <Stack.Screen name="Homescreen" component={Homescreen} options={{ headerShown: false }}/>
+                <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }}/>
+                <Stack.Screen name="Profile" component={Profile}/>
+                <Stack.Screen name="EditProfile" component={EditProfile} options={{ title: "Edit Profile"}}/>
+                <Stack.Screen name="SignUp" component={SignUp}/>
+                <Stack.Screen name="FundAccount" component={FundAccount} options={{ title: "Fund Account"}}/>
+                <Stack.Screen name="Pay" component={Pay}/>
+                <Stack.Screen name="Posts" component={Posts}/>
+                <Stack.Screen name="EditPost" component={EditPost}  options={{ title: "Edit Post"}}/>
+                <Stack.Screen name="AssetDetails" component={AssetDetails}/>
+                <Stack.Screen name="ForgotPassword" component={ForgotPassword}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
