@@ -29,7 +29,7 @@ export function SignIn({ navigation }) {
                             .then((data) => {
                                 setUserUID(data.user.uid);
                                 setPreloader(false)
-                                navigation.navigate("Homescreen")
+                                navigation.reset({ index: 0, routes: [{ name: "Homescreen", }] })
                             })
                             .catch(e => {
                                 setPreloader(false)
